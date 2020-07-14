@@ -1,13 +1,11 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroWalliSwitchDevice extends ZwaveDevice {
 
-  async onMeshInit() {
+  async onNodeInit() {
     this.enableDebug();
-
-    this.driver = this.getDriver();
 
     this.singleSwitchMode = this.node.productTypeId.value === 6657;
 
@@ -84,7 +82,7 @@ class FibaroWalliSwitchDevice extends ZwaveDevice {
         }
 
         this.log('Button flow', button, presses);
-        this.getDriver().buttonSceneTrigger.trigger(this, {}, { button, presses });
+        this.driver.buttonSceneTrigger.trigger(this, {}, { button, presses });
       }
     });
   }

@@ -1,11 +1,11 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroSmartImplant extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     // Settings:
     // Input 1 mode
     // Input 2 mode
@@ -26,8 +26,6 @@ class FibaroSmartImplant extends ZwaveDevice {
     // measure_humidty
 
     // this.enableDebug();
-
-    this.driver = this.getDriver();
 
     this.registerMultiChannelReportListener(1, 'NOTIFICATION', 'NOTIFICATION_REPORT', report => {
       const value = !!report['Event'];
@@ -123,7 +121,7 @@ class FibaroSmartImplant extends ZwaveDevice {
   }
 
   // Settings parser. Not all settings are compatbile with eachother, so check which to save
-  async onSettings(oldSettings, newSettings, changedKeys) {
+  async onSettings({oldSettings, newSettings, changedKeys}) {
     // Input parser
     if (changedKeys.includes('20')) {
       if (newSettings['20'] !== '4' || newSettings['20' !== '5']) this.setCapabilityValue('measure_voltage.input1', null); // reset measure voltage
@@ -141,7 +139,7 @@ class FibaroSmartImplant extends ZwaveDevice {
     // 		}
     // }
 
-    return super.onSettings(oldSettings, newSettings, changedKeys);
+    return super.onSettings({oldSettings, newSettings, changedKeys});
   }
 
   temperatureReportParser(report, sensorNumber) {

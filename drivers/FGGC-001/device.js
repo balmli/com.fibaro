@@ -1,11 +1,11 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroSwipeDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('measure_battery', 'BATTERY');
     this.registerCapability('alarm_battery', 'BATTERY');
 
@@ -14,9 +14,9 @@ class FibaroSwipeDevice extends ZwaveDevice {
        Registering Flow triggers
        ===================================================================
         */
-    this._directionTrigger = this.getDriver().directionTrigger;
-    this._roundTrigger = this.getDriver().roundTrigger;
-    this._sequenceTrigger = this.getDriver().sequenceTrigger;
+    this._directionTrigger = this.driver.directionTrigger;
+    this._roundTrigger = this.driver.roundTrigger;
+    this._sequenceTrigger = this.driver.sequenceTrigger;
 
     /*
         ===================================================================
@@ -129,17 +129,17 @@ class FibaroSwipeDevice extends ZwaveDevice {
     });
   }
 
-  async onSettings(oldSettings, newSettings, changedKeys, callback) {
+  async onSettings({oldSettings, newSettings, changedKeys}) {
     if (changedKeys.includes('gesture_up') || changedKeys.includes('gesture_down')
-			|| changedKeys.includes('gesture_left') || changedKeys.includes('gesture_right')
-            || changedKeys.includes('gesture_cw') || changedKeys.includes('gesture_ccw')) {
+      || changedKeys.includes('gesture_left') || changedKeys.includes('gesture_right')
+      || changedKeys.includes('gesture_cw') || changedKeys.includes('gesture_ccw')) {
       let parsedValue = 0;
       if (this.getSetting('gesture_up')) parsedValue += 1;
-            	if (this.getSetting('gesture_down')) parsedValue += 2;
-            	if (this.getSetting('gesture_left')) parsedValue += 4;
-            	if (this.getSetting('gesture_right')) parsedValue += 8;
-            	if (this.getSetting('gesture_cw')) parsedValue += 16;
-            	if (this.getSetting('gesture_ccw')) parsedValue += 32;
+      if (this.getSetting('gesture_down')) parsedValue += 2;
+      if (this.getSetting('gesture_left')) parsedValue += 4;
+      if (this.getSetting('gesture_right')) parsedValue += 8;
+      if (this.getSetting('gesture_cw')) parsedValue += 16;
+      if (this.getSetting('gesture_ccw')) parsedValue += 32;
 
             	await this.configurationSet({
         index: 10,
@@ -164,7 +164,7 @@ class FibaroSwipeDevice extends ZwaveDevice {
             	changedKeys = [...changedKeys.filter(changedKey => changedKey !== ('double_up' || 'double_down' || 'double_left' || 'double_right'))];
     }
 
-    return super.onSettings(oldSettings, newSettings, changedKeys);
+    return super.onSettings({oldSettings, newSettings, changedKeys});
   }
 
   /*

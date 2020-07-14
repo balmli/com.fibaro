@@ -4,9 +4,9 @@
     "en": "Fibaro"
   },
   "brandColor": "#000000",
-  "sdk": 2,
-  "version": "2.4.6",
-  "compatibility": ">=3.2.0",
+  "sdk": 3,
+  "version": "3.0.0",
+  "compatibility": ">=5.0.0",
   "description": {
     "en": "Fibaro devices for Homey"
   },

@@ -1,21 +1,21 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroSingleSwitchTwoDevice extends ZwaveDevice {
 
-  onMeshInit() {
-    this._S1Trigger = this.getDriver().S1Trigger;
-    this._S2Trigger = this.getDriver().S2Trigger;
-    this._resetMeter = this.getDriver().resetMeter;
+  onNodeInit() {
+    this._S1Trigger = this.driver.S1Trigger;
+    this._S2Trigger = this.driver.S2Trigger;
+    this._resetMeter = this.driver.resetMeter;
 
     this.registerCapability('onoff', 'SWITCH_BINARY');
     this.registerCapability('measure_power', 'METER');
     this.registerCapability('meter_power', 'METER');
 
     this.registerSetting('53', value => {
-        	const kWh = new Buffer(2);
+      const kWh = new Buffer(2);
         	kWh.writeUIntBE([Math.round(value * 100)], 0, 2);
         	return kWh;
     });

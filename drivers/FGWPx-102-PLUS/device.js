@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroWallPlugPlus extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('onoff', 'SWITCH_BINARY');
     this.registerCapability('measure_power', 'SENSOR_MULTILEVEL');
     this.registerCapability('meter_power', 'METER');

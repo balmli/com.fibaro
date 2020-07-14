@@ -1,19 +1,19 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 const TEST_TIMEOUT = 30 * 1000;
 
 class FibaroCODetectorDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('alarm_co', 'NOTIFICATION');
     this.registerCapability('alarm_heat', 'NOTIFICATION');
 
     this.registerReportListener('alarm_co', 'NOTIFICATION', report => {
       if (report && report['Notification Type'] === 'CO'
-				&& report.hasOwnProperty('Event (Parsed)')
-				&& report['Event (Parsed)'].includes('Test')
+        && report.hasOwnProperty('Event (Parsed)')
+        && report['Event (Parsed)'].includes('Test')
       ) {
         if (this.testTimeout) clearTimeout(this.testTimeout);
         this.testTimeout = setTimeout(() => {

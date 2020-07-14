@@ -2,8 +2,8 @@
 
 // Athom includes
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
-const utils = require('homey-meshdriver').Util;
+const {ZwaveDevice} = require('homey-zwavedriver');
+const utils = require('homey-zwavedriver').Util;
 
 // Third party includes
 const tinyGradient = require('tinygradient');
@@ -47,19 +47,19 @@ class FibaroRGBWControllerDevice extends ZwaveDevice {
         Registering Flows
         ================================================================
          */
-    this._onFlowTrigger = this.getDriver().onFlowTrigger;
-    this._offFlowTrigger = this.getDriver().offFlowTrigger;
+    this._onFlowTrigger = this.driver.onFlowTrigger;
+    this._offFlowTrigger = this.driver.offFlowTrigger;
 
-    this._input1FlowTrigger = this.getDriver().input1FlowTrigger;
-    this._input2FlowTrigger = this.getDriver().input2FlowTrigger;
-    this._input3FlowTrigger = this.getDriver().input3FlowTrigger;
-    this._input4FlowTrigger = this.getDriver().input4FlowTrigger;
+    this._input1FlowTrigger = this.driver.input1FlowTrigger;
+    this._input2FlowTrigger = this.driver.input2FlowTrigger;
+    this._input3FlowTrigger = this.driver.input3FlowTrigger;
+    this._input4FlowTrigger = this.driver.input4FlowTrigger;
 
-    this._resetMeterAction = this.getDriver().resetMeterAction;
+    this._resetMeterAction = this.driver.resetMeterAction;
 
-    this._randomColorAction = this.getDriver().randomColorAction;
-    this._specificColorAction = this.getDriver().specificColorAction;
-    this._animationAction = this.getDriver().animationAction;
+    this._randomColorAction = this.driver.randomColorAction;
+    this._specificColorAction = this.driver.specificColorAction;
+    this._animationAction = this.driver.animationAction;
 
     /*
         ================================================================

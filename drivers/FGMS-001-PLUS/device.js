@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroMotionSensorPlus extends ZwaveDevice {
 
-  async onMeshInit() {
+  async onNodeInit() {
     this.registerCapability('alarm_tamper', 'NOTIFICATION', {
       getOpts: {
         getOnOnline: true,

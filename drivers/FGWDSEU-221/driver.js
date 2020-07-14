@@ -7,50 +7,43 @@ class FibaroWalliSwitchDriver extends Homey.Driver {
   onInit() {
     super.onInit();
 
-    this.outputOnAction = new Homey.FlowCardAction('walli_switch_turn_on')
-      .registerRunListener((args, state) => {
-        return args.device.setOutputRunListener(args, state, true);
-      })
-      .register();
+    this.outputOnAction = this.homey.flow.getActionCard('walli_switch_turn_on')
+    this.outputOnAction.registerRunListener((args, state) => {
+      return args.device.setOutputRunListener(args, state, true);
+    })
 
-    this.outputOffAction = new Homey.FlowCardAction('walli_switch_turn_off')
-      .registerRunListener((args, state) => {
-        return args.device.setOutputRunListener(args, state, false);
-      })
-      .register();
+    this.outputOffAction = this.homey.flow.getActionCard('walli_switch_turn_off')
+    this.outputOffAction.registerRunListener((args, state) => {
+      return args.device.setOutputRunListener(args, state, false);
+    })
 
-    this.outputToggleAction = new Homey.FlowCardAction('walli_switch_toggle')
-      .registerRunListener((args, state) => {
-        this.log('Changing state to:', !args.device.getCapabilityValue(`onoff.output${args.output}`));
-        return args.device.setOutputRunListener(args, state,
-          !args.device.getCapabilityValue(`onoff.output${args.output}`));
-      })
-      .register();
+    this.outputToggleAction = this.homey.flow.getActionCard('walli_switch_toggle')
+    this.outputToggleAction.registerRunListener((args, state) => {
+      this.log('Changing state to:', !args.device.getCapabilityValue(`onoff.output${args.output}`));
+      return args.device.setOutputRunListener(args, state,
+        !args.device.getCapabilityValue(`onoff.output${args.output}`));
+    })
 
-    this.ledOnAction = new Homey.FlowCardAction('walli_led_on')
-      .registerRunListener((args, state) => {
-        return args.device.ledOnRunListener(args, state);
-      })
-      .register();
-    this.ledOffAction = new Homey.FlowCardAction('walli_led_off')
-      .registerRunListener((args, state) => {
-        return args.device.ledOffRunListener(args, state);
-      })
-      .register();
+    this.ledOnAction = this.homey.flow.getActionCard('walli_led_on')
+    this.ledOnAction.registerRunListener((args, state) => {
+      return args.device.ledOnRunListener(args, state);
+    })
+    this.ledOffAction = this.homey.flow.getActionCard('walli_led_off')
+    this.ledOffAction.registerRunListener((args, state) => {
+      return args.device.ledOffRunListener(args, state);
+    })
 
-    this.buttonSceneTrigger = new Homey.FlowCardTriggerDevice('walli_switch_button_scenes')
-      .registerRunListener((args, state) => {
-        this.log('Triggering scene flow', args.button == state.button && args.presses == state.presses);
-        return args.button == state.button && args.presses == state.presses;
-      })
-      .register();
+    this.buttonSceneTrigger = this.homey.flow.getDeviceTriggerCard('walli_switch_button_scenes')
+    this.buttonSceneTrigger.registerRunListener((args, state) => {
+      this.log('Triggering scene flow', args.button == state.button && args.presses == state.presses);
+      return args.button == state.button && args.presses == state.presses;
+    })
 
-    this.powerChangedTrigger = new Homey.FlowCardTriggerDevice('walli_switch_power_changed')
-      .registerRunListener((args, state) => {
-        this.log(args, state);
-        return args.output == state.output;
-      })
-      .register();
+    this.powerChangedTrigger = this.homey.flow.getDeviceTriggerCard('walli_switch_power_changed')
+    this.powerChangedTrigger.registerRunListener((args, state) => {
+      this.log(args, state);
+      return args.output == state.output;
+    })
   }
 
 }

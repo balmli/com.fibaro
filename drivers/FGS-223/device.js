@@ -1,25 +1,25 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 const CONFIGURED_MULTI_CHANNEL_ASSOCIATION = 'configuredMCAssociation';
 
 class FibaroDoubleSwitchTwoDevice extends ZwaveDevice {
 
-  async onMeshInit() {
+  async onNodeInit() {
     // If not multi channel node this is the main node, use multi channel node 1 for that
     if (!this.node.isMultiChannelNode) {
       // Migration step to configure multi channel association reporting
       await this._configureMultiChannelNodeReporting();
 
       // Register capabilities on multi channel node 1
-      this.registerCapability('onoff', 'SWITCH_BINARY', { multiChannelNodeId: 1 });
-      this.registerCapability('measure_power', 'METER', { multiChannelNodeId: 1 });
-      this.registerCapability('meter_power', 'METER', { multiChannelNodeId: 1 });
+      this.registerCapability('onoff', 'SWITCH_BINARY', {multiChannelNodeId: 1});
+      this.registerCapability('measure_power', 'METER', {multiChannelNodeId: 1});
+      this.registerCapability('meter_power', 'METER', {multiChannelNodeId: 1});
 
-      this._input1FlowTrigger = this.getDriver().input1FlowTrigger;
-      this._input2FlowTrigger = this.getDriver().input2FlowTrigger;
+      this._input1FlowTrigger = this.driver.input1FlowTrigger;
+      this._input2FlowTrigger = this.driver.input2FlowTrigger;
 
       if (this.hasCommandClass('CENTRAL_SCENE')) {
         this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', report => {
@@ -45,7 +45,7 @@ class FibaroDoubleSwitchTwoDevice extends ZwaveDevice {
       if (this.hasCapability('measure_power')) this.registerCapability('measure_power', 'METER');
     }
 
-    this._resetMeterFlowAction = this.getDriver().resetMeterFlowAction;
+    this._resetMeterFlowAction = this.driver.resetMeterFlowAction;
 
     this.registerSetting('s1_kwh_report', this._kwhReportParser);
   }

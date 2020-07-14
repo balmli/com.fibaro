@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroDoubleRelaySwitchTwoDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('onoff', 'SWITCH_BINARY');
   }
 

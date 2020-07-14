@@ -1,16 +1,16 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroKeyfob extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('measure_battery', 'BATTERY');
 
     // Registering flows
-    this._sceneFlowTrigger = this.getDriver().sceneFlowTrigger;
-    this._sequenceFlowTrigger = this.getDriver().sequenceFlowTrigger;
+    this._sceneFlowTrigger = this.driver.sceneFlowTrigger;
+    this._sequenceFlowTrigger = this.driver.sequenceFlowTrigger;
 
     // Parsing of sequences before sending to Keyfob
     this.registerSetting('lock_timeout', newValue => {

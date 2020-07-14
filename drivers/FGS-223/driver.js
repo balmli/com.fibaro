@@ -7,18 +7,18 @@ class FibaroDoubleSwitchTwoDevice extends Homey.Driver {
   onInit() {
     super.onInit();
 
-    this.input1FlowTrigger = new Homey.FlowCardTriggerDevice('FGS-223_S1').register()
-      .registerRunListener((args, state) => {
-        return args.device.inputFlowListener(args, state);
-      });
-    this.input2FlowTrigger = new Homey.FlowCardTriggerDevice('FGS-223_S2').register()
-      .registerRunListener((args, state) => {
-        return args.device.inputFlowListener(args, state);
-      });
-    this.resetMeterFlowAction = new Homey.FlowCardAction('FGS-223_reset_meter').register()
-      .registerRunListener((args, state) => {
-        return args.device.resetMeterFlowListener(args, state);
-      });
+    this.input1FlowTrigger = this.homey.flow.getDeviceTriggerCard('FGS-223_S1')
+    this.input1FlowTrigger.registerRunListener((args, state) => {
+      return args.device.inputFlowListener(args, state);
+    });
+    this.input2FlowTrigger = this.homey.flow.getDeviceTriggerCard('FGS-223_S2')
+    this.input2FlowTrigger.registerRunListener((args, state) => {
+      return args.device.inputFlowListener(args, state);
+    });
+    this.resetMeterFlowAction = this.homey.flow.getActionCard('FGS-223_reset_meter')
+    this.resetMeterFlowAction.registerRunListener((args, state) => {
+      return args.device.resetMeterFlowListener(args, state);
+    });
   }
 
 }

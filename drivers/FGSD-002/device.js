@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroSmokeDetectorDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('alarm_smoke', 'SENSOR_ALARM');
     this.registerReportListener('alarm_smoke', 'NOTIFICATION', report => {
       if (report && report['Notification Type'] === 'Smoke') {

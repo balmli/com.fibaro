@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroRollerShutter3Device extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('dim', 'SWITCH_MULTILEVEL');
     this.registerCapability('measure_power', 'METER');
     this.registerCapability('meter_power', 'METER');
@@ -12,7 +12,7 @@ class FibaroRollerShutter3Device extends ZwaveDevice {
     this.registerSetting('start_calibration', newValue => {
       if (newValue) {
         setTimeout(() => {
-          this.setSettings({ start_calibration: false });
+          this.setSettings({start_calibration: false});
         }, 5000);
       }
 

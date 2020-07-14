@@ -4,9 +4,9 @@
     "en": "Fibaro"
   },
   "brandColor": "#000000",
-  "sdk": 2,
-  "version": "2.4.6",
-  "compatibility": ">=3.2.0",
+  "sdk": 3,
+  "version": "3.0.0",
+  "compatibility": ">=5.0.0",
   "description": {
     "en": "Fibaro devices for Homey"
   },
@@ -17,31 +17,31 @@
     "climate"
   ],
   "images": {
-    "large": "/assets/images/large.jpg",
-    "small": "/assets/images/small.png"
-  },
-  "author": {
-    "name": "Athom B.V.",
-    "email": "info@athom.com"
-  },
-  "contributors": {
-    "developers": [
-      {
-        "name": "Ralf van Dooren",
-        "email": "ralfvd@gmail.com"
-      },
-      {
-        "name": "Remco Mengers",
-        "email": "caseda08@hotmail.com"
-      },
-      {
-        "name": "Ted Tolboom",
-        "email": "dTNL.Homey@gmail.com"
-      },
-      {
-        "name": "Patrick van der Westen",
-        "email": "pvdwesten@hotmail.com"
-      }
-    ]
-  }
+      "large": "/assets/images/large.jpg",
+      "small": "/assets/images/small.png"
+    },
+    "author": {
+      "name": "Athom B.V.",
+      "email": "info@athom.com"
+    },
+    "contributors": {
+      "developers": [
+        {
+          "name": "Ralf van Dooren",
+          "email": "ralfvd@gmail.com"
+        },
+        {
+          "name": "Remco Mengers",
+          "email": "caseda08@hotmail.com"
+        },
+        {
+          "name": "Ted Tolboom",
+          "email": "dTNL.Homey@gmail.com"
+        },
+        {
+          "name": "Patrick van der Westen",
+          "email": "pvdwesten@hotmail.com"
+        }
+      ]
+    }
 }

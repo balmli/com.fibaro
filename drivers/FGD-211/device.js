@@ -1,14 +1,14 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroDimmerDevice extends ZwaveDevice {
 
-  onMeshInit() {
-    this._momentaryTrigger = this.getDriver().momentaryTrigger;
-    this._toggleTrigger = this.getDriver().toggleTrigger;
-    this._rollerTrigger = this.getDriver().rollerTrigger;
+  onNodeInit() {
+    this._momentaryTrigger = this.driver.momentaryTrigger;
+    this._toggleTrigger = this.driver.toggleTrigger;
+    this._rollerTrigger = this.driver.rollerTrigger;
 
     this.registerCapability('onoff', 'SWITCH_MULTILEVEL');
     this.registerCapability('dim', 'SWITCH_MULTILEVEL');

@@ -1,7 +1,6 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
-const ZwaveUtils = require('homey-meshdriver').Util;
+const {ZwaveDevice, Util} = require('homey-zwavedriver');
 
 const tinyGradient = require('tinygradient');
 
@@ -14,7 +13,7 @@ const multiChannelNodeToColorMap = {
 
 class FibaroRGBWControllerDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     // Color gradient for color_temperature
     this.temperatureGradient = tinyGradient([
       '#80c5fc',
@@ -30,10 +29,8 @@ class FibaroRGBWControllerDevice extends ZwaveDevice {
     };
 
     // Used to calculate the report RGB values back to HSV for capability values.
-    this.currentRGB = ZwaveUtils.convertHSVToRGB(this.currentHSV);
+    this.currentRGB = Util.convertHSVToRGB(this.currentHSV);
     this.stripType = this.getSetting('strip_type');
-
-    this.driver = this.getDriver();
 
     // Check on which mode the controller is configured, then set the capability corresponding
     if (this.stripType === 'cct' && this.getCapabilityValue('light_mode') !== 'temperature') {
@@ -51,7 +48,7 @@ class FibaroRGBWControllerDevice extends ZwaveDevice {
       if (typeof newValues.light_saturation === 'number') this.currentHSV.saturation = newValues.light_saturation;
       this.currentHSV.value = this.getCapabilityValue('dim');
 
-      const rgbColors = ZwaveUtils.convertHSVToRGB(this.currentHSV);
+      const rgbColors = Util.convertHSVToRGB(this.currentHSV);
       rgbColors.white = 0;
       this.sendColors(rgbColors);
     });
@@ -156,7 +153,7 @@ class FibaroRGBWControllerDevice extends ZwaveDevice {
 
     if (args && args.hasOwnProperty('animation')) {
       this.log('Setting animation to', args.animation);
-      if (args.animation === '0') return this.sendColors(ZwaveUtils.convertHSVToRGB(this.currentHSV));
+      if (args.animation === '0') return this.sendColors(Util.convertHSVToRGB(this.currentHSV));
       if (args.animation === '11') args.animation = Math.round(Math.random() * (10 - 6) + 6);
 
       try {
@@ -190,7 +187,7 @@ class FibaroRGBWControllerDevice extends ZwaveDevice {
     });
 
     this.currentRGB[color] = Math.round((report['Value (Raw)'].readUIntBE(0, 1) / 99) * 255);
-    const tempHSV = ZwaveUtils.convertRGBToHSV(this.currentRGB);
+    const tempHSV = Util.convertRGBToHSV(this.currentRGB);
 
     // overwrite tempHSV.value for dim level when lightmode is temperature
     if (typeof this.currentRGB['white'] !== 'undefined' && this.currentRGB['white'] > 0) {

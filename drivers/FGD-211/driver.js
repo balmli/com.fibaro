@@ -7,15 +7,15 @@ class FibaroDimmerDeviceDriver extends Homey.Driver {
   onInit() {
     super.onInit();
 
-    this.momentaryTrigger = new Homey.FlowCardTriggerDevice('FGD-211_momentary').register()
+    this.momentaryTrigger = this.homey.flow.getDeviceTriggerCard('FGD-211_momentary')
       .registerRunListener((args, state) => {
         return args.device.switchTriggersRunListener(args, state);
       });
-    this.toggleTrigger = new Homey.FlowCardTriggerDevice('FGD-211_toggle').register()
+    this.toggleTrigger = this.homey.flow.getDeviceTriggerCard('FGD-211_toggle')
       .registerRunListener((args, state) => {
         return args.device.switchTriggersRunListener(args, state);
       });
-    this.rollerTrigger = new Homey.FlowCardTriggerDevice('FGD-211_roller').register()
+    this.rollerTrigger = this.homey.flow.getDeviceTriggerCard('FGD-211_roller')
       .registerRunListener((args, state) => {
         return args.device.switchTriggersRunListener(args, state);
       });

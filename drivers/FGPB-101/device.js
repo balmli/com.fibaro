@@ -1,19 +1,19 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class Button extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('measure_battery', 'BATTERY');
-    this._onButtonTrigger = this.getDriver().onButtonTrigger;
+    this._onButtonTrigger = this.driver.onButtonTrigger;
 
     this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', report => {
       let debouncer = 0;
 
       if (report
-				&& report.Properties1.hasOwnProperty('Key Attributes')) {
-        const buttonValue = { scene: report.Properties1['Key Attributes'] };
+        && report.Properties1.hasOwnProperty('Key Attributes')) {
+        const buttonValue = {scene: report.Properties1['Key Attributes']};
         if (buttonValue.scene === 'Key Released') {
           if (debouncer === 0) {
             this._onButtonTrigger.trigger(this, null, buttonValue);

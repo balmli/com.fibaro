@@ -7,10 +7,12 @@ class FibaroWallPlugPlusDriver extends Homey.Driver {
   onInit() {
     super.onInit();
 
-    this.ledOnAction = new Homey.FlowCardAction('FGWPx-102-PLUS_led_on').register().registerRunListener(async (args, state) => {
+    this.ledOnAction = this.homey.flow.getActionCard('FGWPx-102-PLUS_led_on');
+    this.ledOnAction.registerRunListener(async (args, state) => {
       return args.device.ledOnRunListener(args, state);
     });
-    this.ledOffAction = new Homey.FlowCardAction('FGWPx-102-PLUS_led_off').register().registerRunListener(async (args, state) => {
+    this.ledOffAction = this.homey.flow.getActionCard('FGWPx-102-PLUS_led_off');
+    this.ledOffAction.registerRunListener(async (args, state) => {
       return args.device.ledOffRunListener(args, state);
     });
   }

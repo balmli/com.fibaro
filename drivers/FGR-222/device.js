@@ -1,15 +1,15 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroRollerShutter2Device extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     if (!this.getStoreValue('invertMigrated')) {
       this.setUnavailable('Migrating inversion setting');
 
       const invert = this.getSetting('invert_direction');
-      this.setSettings({ invertWindowCoveringsDirection: invert });
+      this.setSettings({invertWindowCoveringsDirection: invert});
 
       this.setStoreValue('invertMigrated', true, () => {
         this.setAvailable();

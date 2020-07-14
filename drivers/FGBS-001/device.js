@@ -1,28 +1,28 @@
 'use strict';
 
 const Homey = require('homey');
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroUniversalBinarySensor extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     /*
         =========================================================================
          Initializing Flow triggers/conditions/actions
         =========================================================================
          */
-    this._onTrigger = this.getDriver().onTrigger;
-    this._offTrigger = this.getDriver().offTrigger;
-    this._switchTrigger = this.getDriver().switchTrigger;
+    this._onTrigger = this.driver.onTrigger;
+    this._offTrigger = this.driver.offTrigger;
+    this._switchTrigger = this.driver.switchTrigger;
 
-    this._onTrigger2 = this.getDriver().onTrigger2;
-    this._offTrigger2 = this.getDriver().offTrigger2;
-    this._switchTrigger2 = this.getDriver().switchTrigger2;
+    this._onTrigger2 = this.driver.onTrigger2;
+    this._offTrigger2 = this.driver.offTrigger2;
+    this._switchTrigger2 = this.driver.switchTrigger2;
 
-    this._temperatureTrigger = this.getDriver().temperatureTrigger;
-    this._temperatureTrigger2 = this.getDriver().temperatureTrigger2;
-    this._temperatureTrigger3 = this.getDriver().temperatureTrigger3;
-    this._temperatureTrigger4 = this.getDriver().temperatureTrigger4;
+    this._temperatureTrigger = this.driver.temperatureTrigger;
+    this._temperatureTrigger2 = this.driver.temperatureTrigger2;
+    this._temperatureTrigger3 = this.driver.temperatureTrigger3;
+    this._temperatureTrigger4 = this.driver.temperatureTrigger4;
 
     /*
     	=========================================================================

@@ -4,16 +4,14 @@ const Homey = require('homey');
 
 class FibaroApp extends Homey.App {
 	onInit() {
-		this.log('Fibaro is running');
-	
-		this.actionStartDimLevelChange = new Homey.FlowCardAction('FGD-21x_dim_startLevelChange')
-			.register()
-			.registerRunListener(this._actionStartDimLevelChangeRunListener.bind(this));
-		this.actionStopDimLevelChange = new Homey.FlowCardAction('FGD-21x_dim_stopLevelChange')
-			.register()
-			.registerRunListener(this._actionStopDimLevelChangeRunListener.bind(this));
+    this.log('Fibaro is running');
 
-	}
+    this.actionStartDimLevelChange = this.homey.flow.getActionCard('FGD-21x_dim_startLevelChange')
+    this.actionStartDimLevelChange.registerRunListener(this._actionStartDimLevelChangeRunListener.bind(this));
+    this.actionStopDimLevelChange = this.homey.flow.getActionCard('FGD-21x_dim_stopLevelChange')
+    this.actionStopDimLevelChange.registerRunListener(this._actionStopDimLevelChangeRunListener.bind(this));
+
+  }
 
 	async _actionStartDimLevelChangeRunListener(args, state) {
 		if (!args.hasOwnProperty('direction')) return Promise.reject('direction_property_missing');

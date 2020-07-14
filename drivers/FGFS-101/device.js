@@ -1,12 +1,12 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 const TAMPER_TIMEOUT = 30 * 1000;
 
 class FibaroFloodSensor extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.registerCapability('alarm_water', 'SENSOR_ALARM');
 
     this.setCapabilityValue('alarm_tamper', false);

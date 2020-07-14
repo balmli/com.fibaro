@@ -1,10 +1,10 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroRollerShutterDevice extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     this.printNode();
     this.enableDebug();
 

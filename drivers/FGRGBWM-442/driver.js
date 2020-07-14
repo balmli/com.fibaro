@@ -7,21 +7,21 @@ class FibaroRGBW2Driver extends Homey.Driver {
   onInit() {
     super.onInit();
 
-    this.onFlowTrigger = new Homey.FlowCardTriggerDevice('input_on').register()
-      .registerRunListener((args, state) => {
-        return args.device.onOffFlowRunListener(args, state);
-      });
-    this.offFlowTrigger = new Homey.FlowCardTriggerDevice('input_off').register()
-      .registerRunListener((args, state) => {
-        return args.device.onOffFlowRunListener(args, state);
-      });
+    this.onFlowTrigger = this.homey.flow.getDeviceTriggerCard('input_on')
+    this.onFlowTrigger.registerRunListener((args, state) => {
+      return args.device.onOffFlowRunListener(args, state);
+    });
+    this.offFlowTrigger = this.homey.flow.getDeviceTriggerCard('input_off')
+    this.offFlowTrigger.registerRunListener((args, state) => {
+      return args.device.onOffFlowRunListener(args, state);
+    });
 
-    this.analogInputFlowTrigger = new Homey.FlowCardTriggerDevice('analog_input').register();
+    this.analogInputFlowTrigger = this.homey.flow.getDeviceTriggerCard('analog_input');
 
-    this.animationAction = new Homey.FlowCardAction('RGBW_animation').register()
-      .registerRunListener((args, state) => {
-        return args.device.animationRunListener(args, state);
-      });
+    this.animationAction = this.homey.flow.getActionCard('RGBW_animation')
+    this.animationAction.registerRunListener((args, state) => {
+      return args.device.animationRunListener(args, state);
+    });
   }
 
 }

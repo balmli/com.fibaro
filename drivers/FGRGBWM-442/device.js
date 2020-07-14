@@ -1,14 +1,12 @@
 'use strict';
 
-const { ZwaveLightDevice } = require('homey-meshdriver');
+const {ZwaveLightDevice} = require('homey-zwavedriver');
 
 class FibaroRGBW2Device extends ZwaveLightDevice {
 
-  async onMeshInit() {
-    this.driver = this.getDriver();
-
+  async onNodeInit() {
     // Init for ZWave light device which handles RGBW
-    await super.onMeshInit();
+    await super.onNodeInit();
 
     // Power capabilities
     this.registerCapability('meter_power', 'METER');

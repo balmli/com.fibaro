@@ -1,15 +1,15 @@
 'use strict';
 
-const { ZwaveDevice } = require('homey-meshdriver');
+const {ZwaveDevice} = require('homey-zwavedriver');
 
 class FibaroRollerShutter24Device extends ZwaveDevice {
 
-  onMeshInit() {
+  onNodeInit() {
     if (!this.getStoreValue('invertMigrated')) {
       this.setUnavailable('Migrating inversion setting');
 
       const invert = this.getSetting('invert_direction');
-      this.setSettings({ invertWindowCoveringsDirection: invert });
+      this.setSettings({invertWindowCoveringsDirection: invert});
 
       this.setStoreValue('invertMigrated', true, () => {
         this.setAvailable();
@@ -27,10 +27,10 @@ class FibaroRollerShutter24Device extends ZwaveDevice {
     this.registerCapability('measure_power', 'SENSOR_MULTILEVEL');
     this.registerCapability('meter_power', 'METER');
 
-    this._momentaryTrigger = this.getDriver().momentaryTrigger;
-    this._toggleTrigger = this.getDriver().toggleTrigger;
-    this._singleGateTrigger = this.getDriver().singleGateTrigger;
-    this._resetMeterAction = this.getDriver().resetMeterAction;
+    this._momentaryTrigger = this.driver.momentaryTrigger;
+    this._toggleTrigger = this.driver.toggleTrigger;
+    this._singleGateTrigger = this.driver.singleGateTrigger;
+    this._resetMeterAction = this.driver.resetMeterAction;
 
     this.registerReportListener('SCENE_ACTIVATION', 'SCENE_ACTIVATION_SET', report => {
       const data = {

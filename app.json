@@ -3692,6 +3692,7 @@
           8194,
           12290
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGBS-001/assets/learnmode.svg",
           "instruction": {
@@ -4986,6 +4987,7 @@
           8202,
           12298
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 88,
         "learnmode": {
           "image": "/drivers/FGD-211/assets/learnmode.svg",
@@ -5313,6 +5315,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 2836,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2836/FGD-212-EN-T-v1.3.pdf",
         "learnmode": {
@@ -6453,6 +6456,7 @@
           8193,
           12289
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 994,
         "learnmode": {
           "image": "/drivers/FGFS-101/assets/learnmode.svg",
@@ -7570,6 +7574,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1655,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1655/FGGC-001-EN-T-v1.0.pdf",
         "learnmode": {
@@ -8277,6 +8282,7 @@
           8192,
           12288
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1050,
         "learnmode": {
           "image": "/drivers/FGK-101/assets/learnmode.svg",
@@ -8835,6 +8841,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 2064,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2064/FGKF-601-EN-T-v1.0_30.11.2016.pdf",
         "learnmode": {
@@ -9591,6 +9598,7 @@
           4097,
           12289
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1048,
         "learnmode": {
           "image": "/drivers/FGMS-001/assets/learnmode.svg",
@@ -11565,6 +11573,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1944,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1944/FGPB-101-EN-T-v1.0.pdf",
         "learnmode": {
@@ -11615,6 +11624,7 @@
           8202,
           12298
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 38,
         "learnmode": {
           "instruction": {
@@ -11695,6 +11705,7 @@
           8192,
           12288
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "{{driverassetsPath}}/learnmode.svg",
           "instruction": {
@@ -11933,6 +11944,7 @@
           8192,
           12288
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "{{driverassetsPath}}/learnmode.svg",
           "instruction": {
@@ -12104,6 +12116,7 @@
           12288,
           16384
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1054,
         "learnmode": {
           "image": "/drivers/FGRGBWM-441/assets/learnmode.svg",
@@ -13364,6 +13377,7 @@
           8193,
           12289
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGRM-222/assets/learnmode.svg",
           "instruction": {
@@ -13640,6 +13654,7 @@
           8202,
           12298
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGS-211/assets/learnmode.svg",
           "instruction": {
@@ -13781,6 +13796,7 @@
           8194,
           12290
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGS-212/assets/learnmode.svg",
           "instruction": {
@@ -13933,6 +13949,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1734,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1734/FGS-2x3-EN-T-v1.0 06.06.2016.pdf",
         "learnmode": {
@@ -14188,6 +14205,7 @@
           8202,
           12298
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGS-221/assets/learnmode.svg",
           "instruction": {
@@ -14352,6 +14370,7 @@
           12290,
           16384
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGS-222/assets/learnmode.svg",
           "instruction": {
@@ -14558,6 +14577,7 @@
           40960,
           45056
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 2731,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2731/FGS-2x3-EN-T-v1.2.pdf",
         "learnmode": {
@@ -15162,6 +15182,7 @@
           8192,
           12288
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGSS-001/assets/learnmode.svg",
           "instruction": {
@@ -16844,6 +16865,7 @@
           8192,
           12288
         ],
+        "includeSecure": false,
         "learnmode": {
           "image": "/drivers/FGWPE-101/assets/learnmode.svg",
           "instruction": {
@@ -17284,6 +17306,7 @@
           45057,
           45059
         ],
+        "includeSecure": false,
         "zwaveAllianceProductId": 1653,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1653/FGWPx-102-EN-A-v2.0 29.01.2016-3.pdf",
         "learnmode": {
